@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>零基础 Python 六个月自学导航</title>
+    <title>Python 专业基石路径 (无返工版)</title>
     <style>
         :root {
             --primary-color: #2c3e50;
-            --accent-color: #3498db;
-            --bg-color: #f4f6f9;
+            --accent-color: #27ae60; /* 绿色代表稳健 */
+            --bg-color: #f8f9fa;
             --card-bg: #ffffff;
         }
         body {
@@ -19,212 +19,152 @@
             margin: 0;
             padding: 20px;
         }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-        h1 {
-            color: var(--primary-color);
-            margin-bottom: 10px;
-        }
-        p.subtitle {
-            color: #7f8c8d;
-            font-size: 1.1em;
-        }
+        .container { max-width: 800px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 40px; }
+        h1 { color: var(--primary-color); margin-bottom: 10px; }
+        p.subtitle { color: #7f8c8d; font-size: 1.1em; font-weight: 500; }
+        
         .stage-card {
             background: var(--card-bg);
-            border-radius: 12px;
+            border-radius: 8px;
             padding: 25px;
-            margin-bottom: 25px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
             border-left: 5px solid var(--accent-color);
-            transition: transform 0.2s;
-        }
-        .stage-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
         }
         .stage-title {
-            font-size: 1.3em;
+            font-size: 1.25em;
             font-weight: bold;
             margin-bottom: 15px;
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
         }
         .stage-time {
             font-size: 0.8em;
-            background: #e1f0fa;
+            background: #e8f5e9;
             color: var(--accent-color);
             padding: 4px 10px;
-            border-radius: 20px;
+            border-radius: 12px;
         }
-        .resource-list {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+        
+        .resource-list { list-style: none; padding: 0; margin: 0; }
         .resource-item {
             display: flex;
             align-items: center;
-            margin-bottom: 12px;
-            padding-bottom: 12px;
+            padding: 12px 0;
             border-bottom: 1px solid #eee;
         }
-        .resource-item:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
+        .resource-item:last-child { border-bottom: none; }
+        
         .tag {
             font-size: 0.75em;
             font-weight: bold;
-            padding: 3px 8px;
+            padding: 4px 8px;
             border-radius: 4px;
             margin-right: 15px;
-            min-width: 60px;
+            min-width: 70px;
             text-align: center;
-            text-transform: uppercase;
         }
-        .tag.book { background-color: #fff3cd; color: #856404; }
-        .tag.video { background-color: #d1e7dd; color: #0f5132; }
-        .tag.tool { background-color: #e2e3e5; color: #383d41; }
-        .tag.site { background-color: #cff4fc; color: #055160; }
+        .tag.core { background-color: #2c3e50; color: #fff; } /* 核心必学 */
+        .tag.supp { background-color: #e2e3e5; color: #383d41; } /* 辅助 */
         
         a.resource-link {
             text-decoration: none;
             color: var(--primary-color);
-            font-weight: 500;
+            font-weight: 600;
             flex-grow: 1;
-            display: flex;
-            flex-direction: column;
         }
-        a.resource-link:hover {
-            color: var(--accent-color);
-        }
+        a.resource-link:hover { color: var(--accent-color); }
         .desc {
+            display: block;
             font-size: 0.85em;
             color: #7f8c8d;
-            margin-top: 2px;
+            margin-top: 4px;
             font-weight: normal;
         }
-        .action-btn {
-            background-color: var(--accent-color);
-            color: white;
-            text-decoration: none;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 0.9em;
-            white-space: nowrap;
-        }
-        .action-btn:hover {
-            background-color: #2980b9;
-        }
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            color: #95a5a6;
-            font-size: 0.9em;
-        }
+        .highlight { color: #c0392b; font-weight: bold; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <h1>🚀 Python 六个月自学通关路径</h1>
-        <p class="subtitle">极简资源 · 拒绝冗余 · 理论实战闭环</p>
+        <h1>🏛️ Python 专业基石路径</h1>
+        <p class="subtitle">拒绝返工 · 重视规范 · 只要干货</p>
     </header>
 
     <div class="stage-card">
         <div class="stage-title">
-            <span>阶段 1-2：地基与语法</span>
-            <span class="stage-time">第 1-2 个月</span>
+            <span>Step 1: 语法与规范 (稳扎稳打)</span>
+            <span class="stage-time">1.5 个月</span>
         </div>
         <ul class="resource-list">
             <li class="resource-item">
-                <span class="tag video">视频</span>
-                <a href="https://search.bilibili.com/all?keyword=黑马程序员+python" target="_blank" class="resource-link">
-                    B站黑马程序员 Python 教程
-                    <span class="desc">推荐：母语教学，细致入微，适合完全零基础。</span>
-                </a>
-                <a href="https://search.bilibili.com/all?keyword=黑马程序员+python" target="_blank" class="action-btn">去观看</a>
-            </li>
-            <li class="resource-item">
-                <span class="tag book">书籍</span>
+                <span class="tag core">唯一教材</span>
                 <a href="https://www.ituring.com.cn/book/2784" target="_blank" class="resource-link">
                     《Python编程：从入门到实践》
-                    <span class="desc">核心教材。语法+项目实战的完美结合。</span>
+                    <span class="desc">只看第1-11章。重点：<span class="highlight">函数、类(Class)、文件操作</span>。</span>
                 </a>
-                <a href="https://www.ituring.com.cn/book/2784" target="_blank" class="action-btn">看介绍</a>
             </li>
             <li class="resource-item">
-                <span class="tag tool">工具</span>
+                <span class="tag core">代码规范</span>
+                <a href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_style_rules/" target="_blank" class="resource-link">
+                    Google Python 风格指南 (中文版)
+                    <span class="desc">从第一天起就写规范代码，这是专业与业余的分水岭。</span>
+                </a>
+            </li>
+            <li class="resource-item">
+                <span class="tag supp">辅助工具</span>
                 <a href="https://pythontutor.com/" target="_blank" class="resource-link">
                     Python Tutor
-                    <span class="desc">代码可视化神器，帮你“看见”代码运行逻辑。</span>
+                    <span class="desc">理解“引用”和“内存”的工具，搞懂变量到底是怎么传的。</span>
                 </a>
-                <a href="https://pythontutor.com/" target="_blank" class="action-btn">去使用</a>
-            </li>
-            <li class="resource-item">
-                <span class="tag tool">环境</span>
-                <a href="https://code.visualstudio.com/" target="_blank" class="resource-link">
-                    VS Code 编辑器
-                    <span class="desc">全球最流行的代码编辑器，官方下载。</span>
-                </a>
-                <a href="https://code.visualstudio.com/" target="_blank" class="action-btn">下载</a>
             </li>
         </ul>
     </div>
 
     <div class="stage-card">
         <div class="stage-title">
-            <span>阶段 3：算法与逻辑</span>
-            <span class="stage-time">第 3 个月</span>
+            <span>Step 2: 核心数据结构 (效率内功)</span>
+            <span class="stage-time">0.5 - 1 个月</span>
         </div>
         <ul class="resource-list">
             <li class="resource-item">
-                <span class="tag site">互动</span>
+                <span class="tag core">核心教程</span>
                 <a href="https://www.hello-algo.com/" target="_blank" class="resource-link">
-                    Hello Algo (算法图解)
-                    <span class="desc">动画图解算法，代码可直接运行，比书更直观。</span>
+                    Hello Algo (图解算法)
+                    <span class="desc">重点章节：数组、链表、哈希表(Map)、栈与队列。跳过数学证明。</span>
                 </a>
-                <a href="https://www.hello-algo.com/" target="_blank" class="action-btn">开始学</a>
             </li>
             <li class="resource-item">
-                <span class="tag site">刷题</span>
-                <a href="https://leetcode.cn/" target="_blank" class="resource-link">
-                    LeetCode (力扣中文版)
-                    <span class="desc">从“简单”难度开始，每天一道，验证逻辑。</span>
+                <span class="tag core">实战刷题</span>
+                <a href="https://leetcode.cn/problem-list/2cktkvj/" target="_blank" class="resource-link">
+                    LeetCode 热题 100
+                    <span class="desc">只刷前30道简单/中等题。不追求数量，追求“写出最优解”。</span>
                 </a>
-                <a href="https://leetcode.cn/" target="_blank" class="action-btn">去刷题</a>
             </li>
         </ul>
     </div>
 
     <div class="stage-card">
         <div class="stage-title">
-            <span>阶段 4：工程化与Git</span>
-            <span class="stage-time">第 4 个月</span>
+            <span>Step 3: 工程化 (避免灾难)</span>
+            <span class="stage-time">0.5 个月</span>
         </div>
         <ul class="resource-list">
             <li class="resource-item">
-                <span class="tag site">游戏</span>
+                <span class="tag core">版本控制</span>
                 <a href="https://learngitbranching.js.org/?locale=zh_CN" target="_blank" class="resource-link">
                     Learn Git Branching
-                    <span class="desc">像玩游戏一样学会 Git 分支与合并。</span>
+                    <span class="desc">学会代码“后悔药”。必学：commit, branch, merge, checkout。</span>
                 </a>
-                <a href="https://learngitbranching.js.org/?locale=zh_CN" target="_blank" class="action-btn">玩游戏</a>
             </li>
             <li class="resource-item">
-                <span class="tag book">进阶</span>
-                <a href="#" class="resource-link" style="cursor: default; color: #7f8c8d;">
-                    《Python编程：从入门到实践》后半部分
-                    <span class="desc">重回教材，重点攻克“类”与“项目实战”。</span>
+                <span class="tag core">调试技能</span>
+                <a href="https://code.visualstudio.com/docs/python/debugging" target="_blank" class="resource-link">
+                    VS Code Debugging (官方文档)
+                    <span class="desc">学会打断点(Breakpoint)。<span class="highlight">别再只用 print 调试了！</span></span>
                 </a>
             </li>
         </ul>
@@ -232,40 +172,26 @@
 
     <div class="stage-card">
         <div class="stage-title">
-            <span>阶段 5：领域探索 (三选一)</span>
-            <span class="stage-time">第 5 个月</span>
+            <span>Step 4: 完整项目实战</span>
+            <span class="stage-time">1.5 个月+</span>
         </div>
         <ul class="resource-list">
             <li class="resource-item">
-                <span class="tag site">Web</span>
-                <a href="https://tutorial.djangogirls.org/zh/" target="_blank" class="resource-link">
-                    Django Girls 教程
-                    <span class="desc">Web 开发方向：手把手教你搭建博客网站。</span>
+                <span class="tag core">文档</span>
+                <a href="https://docs.python.org/zh-cn/3/" target="_blank" class="resource-link">
+                    Python 官方文档 (标准库)
+                    <span class="desc">学会查文档，而不是永远依赖教程。</span>
                 </a>
-                <a href="https://tutorial.djangogirls.org/zh/" target="_blank" class="action-btn">访问</a>
             </li>
             <li class="resource-item">
-                <span class="tag site">数据</span>
-                <a href="https://www.kaggle.com/learn" target="_blank" class="resource-link">
-                    Kaggle Learn
-                    <span class="desc">数据科学方向：Pandas/Numpy 免费微课。</span>
+                <span class="tag supp">参考</span>
+                <a href="https://github.com/vinta/awesome-python" target="_blank" class="resource-link">
+                    Awesome Python (GitHub)
+                    <span class="desc">寻找优秀的开源库和项目架构参考。</span>
                 </a>
-                <a href="https://www.kaggle.com/learn" target="_blank" class="action-btn">访问</a>
-            </li>
-            <li class="resource-item">
-                <span class="tag site">办公</span>
-                <a href="https://automatetheboringstuff.com/" target="_blank" class="resource-link">
-                    Automate the Boring Stuff
-                    <span class="desc">自动化方向：Excel/爬虫/办公自动化圣经。</span>
-                </a>
-                <a href="https://automatetheboringstuff.com/" target="_blank" class="action-btn">访问</a>
             </li>
         </ul>
     </div>
-
-    <footer>
-        <p>💡 提示：请将此页面保存为书签，按顺序“通关”。</p>
-    </footer>
 </div>
 
 </body>
