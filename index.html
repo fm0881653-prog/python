@@ -3,88 +3,155 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python 计算机科学基石路径 (教材版)</title>
+    <title>Python 极速通关计划 (白名单版)</title>
     <style>
         :root {
-            --primary-color: #24292e; /* GitHub 黑 */
-            --accent-color: #0366d6; /* 链接蓝 */
-            --bg-color: #f6f8fa;
+            --primary-dark: #1e293b;
+            --primary-blue: #2563eb;
+            --success-green: #10b981;
+            --warning-orange: #f59e0b;
+            --bg-color: #f8fafc;
             --card-bg: #ffffff;
-            --border-color: #e1e4e8;
+            --border-color: #e2e8f0;
+            --text-gray: #64748b;
         }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background-color: var(--bg-color);
-            color: var(--primary-color);
+            color: var(--primary-dark);
             line-height: 1.6;
             margin: 0;
-            padding: 30px;
+            padding: 40px 20px;
         }
+
         .container { max-width: 900px; margin: 0 auto; }
-        header { 
-            border-bottom: 1px solid var(--border-color); 
-            padding-bottom: 20px; 
-            margin-bottom: 30px; 
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 30px;
         }
-        h1 { font-size: 1.8em; margin: 0 0 10px 0; }
-        p.subtitle { color: #586069; margin: 0; }
         
-        .stage-section { margin-bottom: 40px; }
+        h1 { font-size: 2.2em; margin-bottom: 10px; color: var(--primary-dark); }
+        .subtitle { color: var(--text-gray); font-size: 1.1em; }
+        .warning-badge {
+            display: inline-block;
+            background: #fef2f2;
+            color: #ef4444;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-top: 10px;
+            border: 1px solid #fee2e2;
+        }
+
+        /* 阶段卡片 */
+        .stage-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
         .stage-header {
+            background: var(--primary-dark);
+            color: white;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .stage-title { font-size: 1.2em; font-weight: 700; }
+        .stage-time { 
+            background: rgba(255,255,255,0.1); 
+            padding: 4px 12px; 
+            border-radius: 4px; 
+            font-size: 0.9em;
+        }
+
+        .stage-content { padding: 25px; }
+
+        /* 资源链接行 */
+        .resource-row {
             display: flex;
             align-items: baseline;
             margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed var(--border-color);
         }
-        .stage-title { font-size: 1.4em; font-weight: 600; margin-right: 15px; }
-        .stage-meta { 
-            font-size: 0.85em; 
-            color: #586069; 
-            background: #eaecef; 
-            padding: 2px 8px; 
-            border-radius: 4px; 
+        .resource-name {
+            font-weight: 700;
+            color: var(--primary-blue);
+            text-decoration: none;
+            font-size: 1.1em;
+            margin-right: 15px;
+        }
+        .resource-name:hover { text-decoration: underline; }
+        .resource-desc { font-size: 0.9em; color: var(--text-gray); }
+
+        /* 白名单任务清单 */
+        .whitelist-box {
+            background: #f1f5f9;
+            border-left: 4px solid var(--success-green);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-top: 15px;
+        }
+        
+        .whitelist-title {
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            font-size: 0.95em;
+        }
+        .whitelist-title::before {
+            content: "🔒 严格白名单 (只做这些)";
+            margin-right: 8px;
         }
 
-        .resource-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 15px;
+        .task-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
         }
         
-        .resource-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 6px;
-            padding: 20px;
-            transition: border-color 0.2s;
+        .task-item {
+            position: relative;
+            padding-left: 25px;
+            margin-bottom: 8px;
+            font-size: 0.95em;
         }
-        .resource-card:hover { border-color: var(--accent-color); }
         
-        .card-type {
-            text-transform: uppercase;
-            font-size: 0.75em;
+        .task-item::before {
+            content: "✔";
+            position: absolute;
+            left: 0;
+            color: var(--success-green);
             font-weight: bold;
-            color: #6a737d;
-            letter-spacing: 0.5px;
-            margin-bottom: 8px;
-            display: block;
         }
         
-        .card-link {
-            text-decoration: none;
-            color: var(--accent-color);
-            font-weight: 600;
-            font-size: 1.1em;
-            display: block;
-            margin-bottom: 8px;
+        .highlight { color: var(--primary-blue); font-weight: 600; }
+        .note { font-size: 0.85em; color: var(--text-gray); margin-top: 5px; display: block;}
+
+        /* 禁止事项 */
+        .forbidden {
+            margin-top: 15px;
+            font-size: 0.85em;
+            color: #ef4444;
+            font-weight: 500;
+            background: #fff5f5;
+            padding: 8px 12px;
+            border-radius: 4px;
+            display: inline-block;
         }
-        .card-link:hover { text-decoration: underline; }
-        
-        .card-desc { font-size: 0.9em; color: #24292e; margin: 0; }
-        
-        /* 特定样式 */
-        .type-book { color: #d73a49; } /* 红色代表书籍 */
-        .type-docs { color: #0366d6; } /* 蓝色代表官方文档 */
-        .type-code { color: #28a745; } /* 绿色代表实战 */
 
     </style>
 </head>
@@ -92,87 +159,144 @@
 
 <div class="container">
     <header>
-        <h1>🏛️ Python CS 基石路径 (文档/教材版)</h1>
-        <p class="subtitle">仅收录业界标准著作与官方文档 · 适合深度阅读者</p>
+        <h1>🚀 Python 极速通关计划</h1>
+        <p class="subtitle">白名单机制 · 拒绝无效学习 · 目标导向</p>
+        <div class="warning-badge">⚠️ 警告：严禁学习列表之外的任何内容</div>
     </header>
 
-    <div class="stage-section">
+    <div class="stage-card">
         <div class="stage-header">
-            <span class="stage-title">Phase 1: 语言核心</span>
-            <span class="stage-meta">1.5 个月 · 语法与规范</span>
+            <span class="stage-title">阶段 1：语法核心 (The Core)</span>
+            <span class="stage-time">限时 3 周</span>
         </div>
-        <div class="resource-grid">
-            <div class="resource-card">
-                <span class="card-type type-book">核心教材</span>
-                <a href="https://www.ituring.com.cn/book/2784" target="_blank" class="card-link">《Python编程：从入门到实践》</a>
-                <p class="card-desc">通读前 11 章。以本书为主线，建立完整的知识体系。</p>
+        <div class="stage-content">
+            <div class="resource-row">
+                <a href="https://www.ituring.com.cn/book/2784" target="_blank" class="resource-name">📖 教材：《Python编程：从入门到实践》</a>
+                <span class="resource-desc">只看第 1-11 章</span>
             </div>
-            <div class="resource-card">
-                <span class="card-type type-docs">官方标准</span>
-                <a href="https://docs.python.org/zh-cn/3/tutorial/index.html" target="_blank" class="card-link">Python 3 官方教程 (The Python Tutorial)</a>
-                <p class="card-desc">Python 官方提供的入门指南。当书中有不确定的概念时，以此为准。</p>
-            </div>
-            <div class="resource-card">
-                <span class="card-type type-docs">代码规范</span>
-                <a href="https://zh-google-styleguide.readthedocs.io/en/latest/google-python-styleguide/python_style_rules/" target="_blank" class="card-link">Google Python 风格指南</a>
-                <p class="card-desc">基于 PEP 8。强制阅读“命名规范”与“注释”章节，养成职业习惯。</p>
+            
+            <div class="whitelist-box">
+                <div class="whitelist-title"></div>
+                <ul class="task-list">
+                    <li class="task-item">
+                        <span class="highlight">Ch 3-4 (列表):</span> 必做习题 <strong>3-8</strong> (排序/翻转), <strong>4-10</strong> (切片)。
+                    </li>
+                    <li class="task-item">
+                        <span class="highlight">Ch 5 (IF语句):</span> 必做习题 <strong>5-10</strong> (用户检查)，理解逻辑判断。
+                    </li>
+                    <li class="task-item">
+                        <span class="highlight">Ch 6 (字典):</span> 重点理解“嵌套”。必做习题 <strong>6-11</strong> (城市数据)。
+                    </li>
+                    <li class="task-item">
+                        <span class="highlight">Ch 8 (函数):</span> 跳过“任意数量实参”。必做习题 <strong>8-10</strong> (修改列表副作用)。
+                    </li>
+                    <li class="task-item">
+                        <span class="highlight">Ch 9 (类/OOP):</span> <span style="color:#d97706">死磕本章</span>。必做习题 <strong>9-6</strong> (继承), <strong>9-13</strong> (标准库)。
+                    </li>
+                    <li class="task-item">
+                        <span class="highlight">Ch 10 (文件):</span> 掌握 json.dump/load。必做习题 <strong>10-12</strong> (数据持久化)。
+                    </li>
+                </ul>
+                <div class="forbidden">🚫 禁止：阅读第 12-17 章（外星人游戏/数据可视化）。</div>
             </div>
         </div>
     </div>
 
-    <div class="stage-section">
+    <div class="stage-card">
         <div class="stage-header">
-            <span class="stage-title">Phase 2: 数据结构与算法</span>
-            <span class="stage-meta">1 个月 · 计算机科学内功</span>
+            <span class="stage-title">阶段 2：内功心法 (Data Structures)</span>
+            <span class="stage-time">限时 2 周</span>
         </div>
-        <div class="resource-grid">
-            <div class="resource-card">
-                <span class="card-type type-book">电子教材</span>
-                <a href="https://www.hello-algo.com/chapter_introduction/" target="_blank" class="card-link">《Hello 算法》 (Hello Algo)</a>
-                <p class="card-desc">一本开源、系统的数据结构教材。替代了碎片化的博客教程。</p>
+        <div class="stage-content">
+            <div class="resource-row">
+                <a href="https://www.hello-algo.com/" target="_blank" class="resource-name">📚 教材：《Hello 算法》</a>
+                <span class="resource-desc">只读指定章节，跳过数学推导</span>
             </div>
-            <div class="resource-card">
-                <span class="card-type type-code">标准题库</span>
-                <a href="https://leetcode.cn/problem-list/2cktkvj/" target="_blank" class="card-link">LeetCode 热题 100</a>
-                <p class="card-desc">仅完成前 30 道 Easy/Medium 题目。验证对“数组/链表/哈希表”的理解。</p>
+            <div class="resource-row">
+                <a href="https://leetcode.cn/problem-list/2cktkvj/" target="_blank" class="resource-name">💻 练习：LeetCode 力扣</a>
+                <span class="resource-desc">仅刷 7 道指定题</span>
+            </div>
+
+            <div class="whitelist-box">
+                <div class="whitelist-title"></div>
+                <ul class="task-list">
+                    <li class="task-item">
+                        <span class="highlight">理论阅读:</span> Ch 2.3 (复杂度), Ch 4 (数组/链表), Ch 5 (栈/队列), Ch 6 (哈希表)。
+                    </li>
+                    <li class="task-item">
+                        <span class="highlight">No. 1 两数之和:</span> 哈希表必考题。
+                    </li>
+                    <li class="task-item">
+                        <span class="highlight">No. 20 有效的括号:</span> 栈的经典应用。
+                    </li>
+                    <li class="task-item">
+                        <span class="highlight">No. 206 反转链表:</span> 链表基本功。
+                    </li>
+                    <li class="task-item">
+                        <span class="highlight">No. 704 二分查找:</span> 基础搜索算法。
+                    </li>
+                    <li class="task-item">
+                        <span class="highlight">No. 141, 242, 121:</span> 环形链表、异位词、买卖股票。
+                    </li>
+                </ul>
+                <div class="forbidden">🚫 禁止：刷“困难”题，禁止研究动态规划、图论。</div>
             </div>
         </div>
     </div>
 
-    <div class="stage-section">
+    <div class="stage-card">
         <div class="stage-header">
-            <span class="stage-title">Phase 3: 工程化工具</span>
-            <span class="stage-meta">0.5 个月 · Git 与 调试</span>
+            <span class="stage-title">阶段 3：工程工具 (Tools)</span>
+            <span class="stage-time">限时 3 天</span>
         </div>
-        <div class="resource-grid">
-            <div class="resource-card">
-                <span class="card-type type-book">业界圣经</span>
-                <a href="https://git-scm.com/book/zh/v2" target="_blank" class="card-link">《Pro Git》 中文版</a>
-                <p class="card-desc">Git 官方著作。必读：第1章(起步)、第2章(基础)、第3章(分支)。</p>
+        <div class="stage-content">
+            <div class="resource-row">
+                <a href="https://git-scm.com/book/zh/v2" target="_blank" class="resource-name">📘 文档：《Pro Git》</a>
+                <span class="resource-desc">只读 Ch 2.1 - 2.5</span>
             </div>
-            <div class="resource-card">
-                <span class="card-type type-docs">技术手册</span>
-                <a href="https://code.visualstudio.com/docs/python/python-tutorial#_configure-and-run-the-debugger" target="_blank" class="card-link">VS Code 文档：Python 调试</a>
-                <p class="card-desc">学习如何使用 Breakpoints (断点) 和 Variables (变量监视)。</p>
+
+            <div class="whitelist-box">
+                <div class="whitelist-title"></div>
+                <ul class="task-list">
+                    <li class="task-item">
+                        <span class="highlight">Git 五大金刚:</span> 必须背下的命令：<br>
+                        <code>git status</code>, <code>git add .</code>, <code>git commit -m "..."</code>, <code>git pull</code>, <code>git push</code>
+                    </li>
+                    <li class="task-item">
+                        <span class="highlight">VS Code 调试:</span> 必须完成一次完整流程：<br>
+                        打断点(F9) -> 启动(F5) -> 单步跳过(F10) -> 观察变量窗口。
+                    </li>
+                </ul>
+                <div class="forbidden">🚫 禁止：学习 Rebase, Cherry-pick 等高级命令。</div>
             </div>
         </div>
     </div>
 
-    <div class="stage-section">
+    <div class="stage-card">
         <div class="stage-header">
-            <span class="stage-title">Phase 4: 领域实战 (参考文档)</span>
-            <span class="stage-meta">1.5 个月 · 查阅与构建</span>
+            <span class="stage-title">阶段 4：综合实战 (Project)</span>
+            <span class="stage-time">限时 2 周</span>
         </div>
-        <div class="resource-grid">
-            <div class="resource-card">
-                <span class="card-type type-docs">Web 开发</span>
-                <a href="https://docs.djangoproject.com/zh-hans/5.0/intro/tutorial01/" target="_blank" class="card-link">Django 官方文档：编写你的第一个应用</a>
-                <p class="card-desc">如果选 Web 方向：直接啃官方文档，这是最权威的实战教程。</p>
+        <div class="stage-content">
+            <div class="resource-row">
+                <span class="resource-name" style="cursor:default; color:#333">🛠️ 项目：Django 学习笔记 (Web App)</span>
+                <span class="resource-desc">《从入门到实践》 第 18-20 章</span>
             </div>
-            <div class="resource-card">
-                <span class="card-type type-docs">数据科学</span>
-                <a href="https://pandas.pydata.org/docs/user_guide/10min.html" target="_blank" class="card-link">Pandas 官方文档 (10分钟入门)</a>
-                <p class="card-desc">如果选数据方向：官方 User Guide 是最好的老师。</p>
+
+            <div class="whitelist-box">
+                <div class="whitelist-title"></div>
+                <ul class="task-list">
+                    <li class="task-item">
+                        <span class="highlight">Ch 18 (起步):</span> 建立虚拟环境，定义模型，Django后台管理。
+                    </li>
+                    <li class="task-item">
+                        <span class="highlight">Ch 19 (用户账户):</span> 制作登录、注销、注册页面（体会 Auth 流程）。
+                    </li>
+                    <li class="task-item">
+                        <span class="highlight">Ch 20 (部署):</span> 只要能跑通样式和功能即可，不需要深究服务器配置。
+                    </li>
+                </ul>
+                <div class="forbidden">🚫 禁止：做另外两个项目（外星人入侵/数据可视化）。</div>
             </div>
         </div>
     </div>
